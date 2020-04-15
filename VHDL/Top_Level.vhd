@@ -61,6 +61,7 @@ begin
 		port map (
 			challenge  => challenge,
 			rst  => rst,
+			clk => clk_gen_out,
 			response => response -- should get tied to ouput ram
 			);
 			

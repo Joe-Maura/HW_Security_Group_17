@@ -6,6 +6,7 @@ entity XOR_Response is
 port (
 challenge 	: IN std_logic_vector(63 downto 0); 
 rst 	 	: IN std_logic; 
+clk			: IN std_logic;
 response 	: OUT std_logic 
 );
 end XOR_Response;
@@ -17,11 +18,13 @@ begin
 		port map (
 			challenge =>challenge,
 			rst =>rst,
+			clk => clk,
 			response => output1);			
 	Bit2 : entity work.XOR_Arbiter_PUF_Strand
 		port map (
 			challenge =>challenge,
 			rst =>rst,
+			clk => clk,
 			response => output2);
 			
 	response <= output1 xor output2;

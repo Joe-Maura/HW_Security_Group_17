@@ -5,6 +5,7 @@ entity XOR_Arbiter_PUF_STRAND is
 port (
 challenge 	: IN std_logic_vector(63 downto 0); -- challenge
 rst 	 	: IN std_logic; -- enable signal for arbiter puf
+clk 	 	: IN std_logic; -- enable signal for arbiter puf
 response 	: OUT std_logic -- response
 );
 end XOR_Arbiter_PUF_STRAND;
@@ -31,10 +32,10 @@ signal output57_B_S, output58_B_S, output59_B_S, output60_B_S, output61_B_S, out
 begin
 	Stage1 : entity work.Double_Mux
 		port map (
-			input1  =>'1',
-			input2  =>'1',
-			input3  =>'1',
-			input4  =>'1',
+			input1  =>clk,
+			input2  =>clk,
+			input3  =>clk,
+			input4  =>clk,
 			sel   	=> challenge(0),
 			output1 => output1_A_S,
 			output2 => output1_B_S);			
